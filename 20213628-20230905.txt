@@ -1,0 +1,58 @@
+    1  cd/
+    2  ls/
+    3  plj
+    4  mkdir penglj
+    5  cd
+    6  git init
+    7  mkdir penglj
+    8  git clone https://www.jianshu.com/
+    9  mkdir plj
+   10  cd plj
+   11  cd.
+   12  cd/
+   13  ls -la
+   14  git log
+   15  mkdir plj
+   16  mkdir penglj
+   17  cd penglj
+   18  ls
+   19  cd/d/penglj
+   20  cd/d:penglj
+   21  cd
+   22  cd /
+   23  cd
+   24  cd /
+   25  mkdir /d/plj
+   26  cd /d/plj
+   27  cd /d
+   28  ls
+   29  history
+   30  cd plj
+   31  touch penglijuan.txt
+   32  cd /
+   33  mkdir plj
+   34  cd/
+   35  cd /d
+   36  mkdir plj
+   37  cd /d/plj
+   38  touch penglijuan.txt
+   39  history
+   40  cd/
+   41  cd/
+   42  cd
+   43  cd /
+   44  cd /d/
+   45  mkdir plj
+   46  cd /d/plj/penglj
+   47  cd /d/plj
+   48  mkdir penglj
+   49  history
+   50  cd /d/plj/penglj.txt
+   51  rmdir
+   52  mkdir penglj.txt
+   53  touch penglj.txt
+   54  cd /c/plj
+   55  touch penglijuan.txt
+   56  history
+操作步骤：
+先从计算机中找到根目录，进入根目录，再在根目录中创建文件。

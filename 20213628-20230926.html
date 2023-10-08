@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web第四次作业</title>
+    <style>
+        body {
+            background: url("https://ts1.cn.mm.bing.net/th/id/R-C.8f3ae714bc3a85bd3a3671c4ca83320a?rik=ddpgBjZWqPmw%2fA&riu=http%3a%2f%2fpic.sucaibar.com%2fpic%2f201307%2f18%2f6a1162340d.jpg&ehk=hxD1M1M%2fNmj5sTVoNfCVElMUjKAspLJxfe3YyxZ3wFc%3d&risl=&pid=ImgRaw&r=0");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        div {
+            width: 800px;
+            border-radius: .5em;
+            /*添加圆角边框*/
+            margin: 1em auto;
+            padding: 0.5em;
+            padding-bottom: .5em;
+            /*内边距区域中下方的高度*/
+            text-indent: 20px;
+            line-height: 1.5em;
+            /*表示行高*/
+            background-color: rgba(117, 112, 112, 0.3);
+            font-size: 24px;
+            font-family: '微软雅黑', Courier, monospace;
+        }
+
+        p {
+            font-size: 18px;
+            font-family: Courier, monospace;
+        }
+
+        p1 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        ping命令的基本信息
+
+        <p>Ping命令可以进行以下操作:<br>
+            (1)通过将ICMP(Internet控制消息协议)回显数据包发送到计算机并侦听回显回复数据包来验证与一台或多台远程计算机的连接。<br>
+            (2)每个发送的数据包最多等待一秒。<br>
+            (3)打印已传输和接收的数据包数。<br>
+            <p1>注意</p1>
+            :Ping成功并不一定就代表TCP/IP配置正确,有可能还要执行大量的本地主机与远程主机的数据包交换,才能确信TCP/IP配置的正确性。如果执行ping成功而网络仍无法使用,那么问题很可能出在网络系统的软件配置方面,ping成功只保证当前主机与目的主机间存在一条连通的物理路径。
+        </p>
+    </div>
+    <div id="box2">
+        grep命令的运用:
+
+        <p>grep '^tor' cet6.txt :
+            查找cet6.txt中以tor开头的所有单词;</p>
+        <p>grep 'tor$' cet6.txt :
+            查找cet6.txt中以tor结尾的所有单词;</p>
+    </div>
+    <div id="box3">
+        cut命令的使用:
+
+        <p>cut --delimiter=/ -f1 cet6.txt :
+            将cet6.txt中以/为分割线的所有第一列单词列出;</p>
+        <p>cut --delimiter=/ -f cet6.txt | grep 'ter$':
+            将cet6.txt中以ter结尾的单词列出;
+        </p>
+    </div>
+</body>
+
+</html>
