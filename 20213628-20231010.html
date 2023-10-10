@@ -34,11 +34,11 @@
             myVideos.pause();
         };
         document.getElementById("next").onclick = function () {
-            if (i == mp4Files.length - 1) {
-                i = -1;
-
-            }
             i++;
+            if (i == mp4Files.length) {
+                i = 0;
+            }
+
             myVideos.src = "../myVideo/" + mp4Files[i];
             myVideos.play();
         };
