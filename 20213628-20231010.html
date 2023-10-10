@@ -34,8 +34,9 @@
             myVideos.pause();
         };
         document.getElementById("next").onclick = function () {
-            if (i == mp4Files.length) {
+            if (i == mp4Files.length - 1) {
                 i = -1;
+
             }
             i++;
             myVideos.src = "../myVideo/" + mp4Files[i];
