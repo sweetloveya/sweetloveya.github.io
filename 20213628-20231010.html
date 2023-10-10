@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            font-size: 2em;
+            margin-right: 2em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <video id="myVideo"></video>
+    <div>
+        <button id="play">Play</button>
+        <button id="stop">Stop</button>
+        <button id="next">Next</button>
+    </div>
+    <script>
+        var mp4Files = ["watch01.mp4", "watch02.mp4", "watch03.mp4"]
+        var myVideos = document.getElementById("myVideo");
+        var i = 0;
+        myVideos.src = "../myVideo/" + mp4Files[i];
+
+        document.getElementById("play").onclick = function () {
+            myVideos.play();
+        };
+        document.getElementById("stop").onclick = function () {
+            myVideos.pause();
+        };
+        document.getElementById("next").onclick = function () {
+            if (i == mp4Files.length) {
+                i = -1;
+            }
+            i++;
+            myVideos.src = "video/" + mp4Files[i];
+            myVideos.play();
+        };
+    </script>
+</body>
+
+</html>
