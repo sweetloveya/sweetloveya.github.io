@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <video id="myVideo"></video>
+    <video id="myVideo"></video> <br>
     <button id="play">Play</button>
     <button id="stop">Stop</button>
     <button id="next">Next</button>
     Time:<input type="text" value="0" id="currentTime">
+    Watch:<input type="text" value="1" id="currentWatch">
     </div>
     <script>
         var mp4Files = ["watch01.mp4", "watch02.mp4", "watch03.mp4"]
@@ -30,8 +31,10 @@
         document.getElementById("play").onclick = function () {
             if (!parseInt(currentTimeDom.value)) {
                 currentTimeDom.value = 0;
-                console.log = "输入错误！";
+                alert("输入错误")
             }
+            i = currentWatchDom.value;
+            myVideos.src = "../myVideo/" + mp4Files[i];
             myVideos.currentTime = currentTimeDom.value;
             myVideos.play();
         };
@@ -45,14 +48,16 @@
             if (i == mp4Files.length) {
                 i = 0;
             }
-
             myVideos.src = "../myVideo/" + mp4Files[i];
             myVideos.play();
         };
         //下面的程序是控制UI界面的当前时间框架
         var currentTimeDom = document.getElementById("currentTime");
-        currentTimeDom.value = 50;
+        currentTimeDom.value = 0;
 
+        //下面的程序是控制UI界面的当前播放视频的序列
+        var currentWatchDom = document.getElementById("currentWatch");
+        currentWatchDom.value = 0;
     </script>
 </body>
 
