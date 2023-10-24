@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+    <style>
+        .button,input{
+            font-size: 20px;
+            margin-right: 20px;
+            width: 40px;
+        }
+        video{
+            z-index: 0;
+        }
+        div#logo{
+            background-color: aqua;
+            color: white;
+            font-size: 4em;
+            padding: 10px 20px;
+            position: absolute;
+            right: 30px;
+            top:30px;
+        }
+    </style>
+</head>
+<body>
+
+    <video id = "myvideo"></video>
+    <div id="logo">
+        
+    </div>
+    <div id="UI">
+        <button id="play">play</button>
+        <button id="pause">pause</button>
+        <button id="next">next</button>
+        时刻:<input type="text" value="0" id="currentTime">
+    </div>
+
+    <script>
+
+        var mp4files=["funDogs.mp4","playdog.mp4","cattle.mp4"];
+        var myvideos = document.getElementById("myvideo");
+        var duration = document.getElementById("duration");
+        var i = 0;
+        myvideos.src = "../myvideo/" + mp4files[0];
+
+        //全屏设置
+        var browserWidth = document.body.clientWidth;
+        myvideos.style.width = browserWidth + 'px';
+
+        document.getElementById("play").onclick = function(){
+            if(!parseInt(currentTimeDom.value)){
+                currentTimeDom.value = 0;
+                console.log("非法输入");
+            }
+
+            if(currentTimeDom.value > myvideos.duration){
+                currentTimeDom.value = duration;
+            }
+
+            myvideos.currentTime = parseInt(currentTimeDom.value);
+            myvideos.play();
+        };
+
+        document.getElementById("pause").onclick = function(){
+            myvideos.pause();
+        };
+
+        document.getElementById("next").onclick = function(){
+            i++;
+            if(i == mp4files.length){
+                i = 0;
+            }
+            myvideos.src = "../myvideo/" + mp4files[i];
+            myvideos.play();
+
+            logoDom.textContent = 'NO.' + (i + 1) + '/' + '共' + mp4files.length;
+        };
+
+        //控制当前时间
+        var currentTimeDom = document.getElementById("currentTime");
+        var playDom = document.getElementById("play");
+        var stopDom = document.getElementById("pause");
+        var logoDom = document.getElementById("logo");
+        var nextDom = document.getElementById("next");
+        currentTimeDom.value = 0;
+
+        window.setInterval(function(){
+            currentTimeDom.value = parseInt(myvideos.currentTime) + 's';
+        } , 1000);
+        logoDom.textContent = 'NO.' + (i + 1) + '/' + '共' + mp4files.length;
+
+        document.onkeydown = function(e){
+            console.log("you type:" + e.key);
+        }
+
+    </script>
+
+</body>
+</html>
