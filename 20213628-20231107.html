@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web第八次作业</title>
+    <style>
+        div {
+            font-size: 2em;
+            margin-right: 2em;
+        }
+
+        input {
+            font-size: 1, 5em;
+        }
+
+        div#logo {
+            background-color: aquamarine;
+            color: aliceblue;
+            position: absolute;
+            left: 24em;
+            top: 0;
+            font-size: 16px;
+        }
+
+        div#showTime {
+            background-color: aquamarine;
+            color: aliceblue;
+            position: absolute;
+            left: 2em;
+            top: 0;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="logo"></div>
+    <div id="showTime"></div>
+    <video id="myVideo"></video> <br>
+    <div id="duration"></div>
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+    <button id="next">Next</button>
+    Time:<input type="text" value="0" id="currentTime">
+    Watch:<input type="text" value="0" id="currentWatch">
+    </div>
+    <script>
+        var mp4Files = ["watch01.mp4", "watch02.mp4", "watch03.mp4"]
+        var myVideos = document.getElementById("myVideo");
+        var showTimeDom = document.getElementById("showTime");
+        var currentTimeDom = document.getElementById("currentTime");
+        var currentWatchDom = document.getElementById("currentWatch");
+        var logoDom = document.getElementById("logo");
+        var nextDom = document.getElementById("next");
+        var i = 0;
+
+        window.setInterval(function () {
+            var showTimeString = parseInt(myVideos.currentTime) + 's';
+            showTimeString += '/' + parseInt(myVideos.duration) + 's';
+            showTimeDom.textContent = showTimeString;
+        }, 1000);
+
+        logoDom.textContent = 'NO.' + (i + 1) + '共' + mp4Files.length;
+
+        myVideos.src = "../myVideo/" + mp4Files[i];
+        document.getElementById("play").onclick = function () {
+            i = currentWatchDom.value;
+            myVideos.src = "../myVideo/" + mp4Files[i];
+            myVideos.currentTime = currentTimeDom.value;
+            myVideos.play();
+        };
+
+        document.getElementById("stop").onclick = function () {
+            myVideos.pause();
+        };
+
+        document.getElementById("next").onclick = function () {
+            i++;
+            if (i == mp4Files.length) {
+                i = 0;
+            }
+            myVideos.src = "../myVideo/" + mp4Files[i];
+            logoDom.textContent = 'NO.' + (i + 1) + '共' + mp4Files.length;
+            myVideos.play();
+        };
+        //动态生成9个按钮用于控制进度
+        var durationDom = [];
+        for (let i = 0; i < 9; i++) {
+            let tempDom = document.createElement('input');
+            tempDom.type = 'button';
+            tempDom.value += 'No.' + (i + 1);
+            durationDom[i] = tempDom;
+            document.getElementById('duration').appendChild(durationDom[i]);
+        }
+        for (let i = 0; i < 9; i++) {
+            durationDom[i].onclick = function () {
+                myVideos.currentTime = i * myVideos.duration / 9;
+            };
+        }
+    </script>
+</body>
+
+</html>
