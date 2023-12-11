@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web第九次作业</title>
+    <style>
+        div {
+            font-size: 2em;
+            margin-right: 2em;
+            align-content: center;
+        }
+
+        input {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button {
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        div#logo {
+            background-color: aquamarine;
+            color: aliceblue;
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            font-size: 32px;
+        }
+
+        div#showTime {
+            background-color: aquamarine;
+            color: aliceblue;
+            position: absolute;
+            left: 1em;
+            top: 1em;
+            font-size: 32px;
+        }
+    </style>
+    <script src="ks.js">
+    </script>
+
+</head>
+
+<body>
+    <div id="logo"></div>
+    <div id="showTime"></div>
+    <video id="myVideo"></video> <br>
+    <div id="duration"></div>
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+    <button id="next">Next</button>
+    Time:<input type="text" value="0" id="currentTime">
+    Watch:<input type="text" value="0" id="currentWatch">
+    </div>
+    <script>
+        var Model = {};
+        Model.UI = {};
+        Model.i = 0;
+        Model.isVideo = true;
+
+        Model.myAuio = new Audio();
+        Model.myAuio.src = "mp3/" + mp3Files[0];
+        //下面的程序是控制UI界面
+        Model.UI.myVideosDom = document.getElementById("myVideo");
+        Model.UI.myVideosDom.src = "video/" + mp4Files[Model.i];
+        Model.UI.showTimeDom = document.getElementById("showTime");
+
+        Model.UI.playDom = document.getElementById("play");
+        Model.UI.stopDom = document.getElementById("stop");
+        Model.UI.logoDom = document.getElementById("logo");
+        Model.UI.nextDom = document.getElementById("next");
+        Model.UI.durationDom = {};
+        //durationDom用来作为9个时间控制UI的容器，与div id=duration对应
+        //视频UI全屏设置
+        var browserWidth = document.body.clientWidth;
+        myVideos.style.width = browserWidth + "px";
+
+        window.setInterval(function () {
+            var showTimeString = parseInt(myVideos.currentTime) + 's';
+            showTimeString += '/' + parseInt(myVideos.duration) + 's';
+            showTimeDom.textContent = showTimeString;
+        }, 1000);
+
+        logoDom.textContent = 'NO.' + (i + 1) + '共' + mp4Files.length;
+        myVideos.src = "/media/myVideo/" + mp4Files[i];
+
+        document.getElementById("play").onclick = function () {
+            i = currentWatchDom.value;
+            myVideos.src = "../myVideo/" + mp4Files[i];
+            myVideos.currentTime = currentTimeDom.value;
+            myVideos.play();
+        };
+
+        document.getElementById("stop").onclick = function () {
+            myVideos.pause();
+        };
+
+        document.getElementById("next").onclick = function () {
+            i++;
+            if (i == mp4Files.length) {
+                i = 0;
+            }
+            myVideos.src = "../myVideo/" + mp4Files[i];
+            logoDom.textContent = 'NO.' + (i + 1) + '共' + mp4Files.length;
+            myVideos.play();
+        };
+        //动态生成9个按钮用于控制进度
+        var durationDom = [];
+        for (let i = 0; i < 9; i++) {
+            let tempDom = document.createElement('input');
+            tempDom.type = 'button';
+            tempDom.value += 'No.' + (i + 1);
+            durationDom[i] = tempDom;
+            document.getElementById('duration').appendChild(durationDom[i]);
+        }
+        for (let i = 0; i < 9; i++) {
+            durationDom[i].onclick = function () {
+                myVideos.currentTime = i * myVideos.duration / 9;
+            };
+        }
+    </script>
+</body>
+
+</html>
