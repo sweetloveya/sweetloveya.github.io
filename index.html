@@ -70,10 +70,16 @@
         border-radius: 50%;
     }
 
-    .img2 {
-        float: right;
-        margin-top: -817px;
+    .images {
+        width: 500px;
+        text-align: center;
     }
+
+    /* .img2 {
+        float: right;
+        position: sticky;
+        margin-top: -817px;
+    } */
 
     h3 {
         font-size: 24px;
@@ -130,8 +136,13 @@
                 <h2>个人介绍</h2>
             </div>
             <div class="img1">
-                <img src="/images/img1.jpg" alt="个人照片" width="180px">
-                <h3>学生姓名：彭丽娟</h3>
+                <table class="images" border="0">
+                    <tr>
+                        <td> <img src="/images/img1.jpg" alt="个人照片" width="180px"></td>
+                        <td><img src="/images/img2.jpg" alt="教师照片" width="180px"></td>
+                    </tr>
+                </table>
+                <h3>学生姓名：彭丽娟&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp教师姓名：李建宏</h3>
                 <h3>学校：江西科技师范大学</h3>
                 <h3>学院：元宇宙产业学院</h3>
                 <h3>班级：21级计算机科学与技术2班</h3>
@@ -147,8 +158,7 @@
                 </ul>
             </div>
             <div class="img2">
-                <img src="/images/img2.jpg" alt="教师照片" width="180px">
-                <h3 class="sign">教师姓名：李建宏</h3>
+
             </div>
         </div>
 
